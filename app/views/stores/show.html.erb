@@ -1,28 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Phone:</strong>
+<%= image_tag(@store.avatar_url, :width => 200, :height => 200) if @store.avatar.present? %>
+</p>
+<p>
+  <%= @store.name %>
+</p>
+<p>
   <%= @store.phone %>
 </p>
 
 <p>
-  <strong>Address:</strong>
   <%= @store.address %>
 </p>
 
 <p>
-  <strong>Avatar:</strong>
-<%= image_tag(@store.avatar_url, :width => 600) if @store.avatar.present? %>
-</p>
-
-<p>
-  <strong>Latitude:</strong>
-  <%= @store.latitude %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @store.longitude %>
+  <% if user_signed_in? and current_user.store != nil %>
+  <%= link_to 'Publicar Oferta' ,new_store_offer_path(@store) %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_store_path(@store) %> |

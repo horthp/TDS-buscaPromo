@@ -1,0 +1,8 @@
+<h1>Editing Offer</h1>
+
+<%= render 'form' %>
+  <% if user_signed_in? and current_user.store != nil %>
+  <%= link_to 'Nueva Oferta', store_offer_path(current_user.store.id) %>
+  <% link_to 'Back', store_offers_path %> 
+  <% end %>
+
