@@ -4,9 +4,8 @@ class CreateStores < ActiveRecord::Migration
       t.string :name
       t.string :phone
       t.string :address
+      t.string :email
       t.string :avatar
-      t.float :latitude
-      t.float :longitude
       t.belongs_to :user
       t.timestamps null: false
     end
