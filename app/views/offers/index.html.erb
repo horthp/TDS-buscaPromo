@@ -17,12 +17,9 @@
     <% @offers.each do |offer| %>
       <tr>
         <td><%= offer.title %></td>
-        <td><%= offer.picture %></td>
+        <td><%= image_tag(offer.picture_url, :width => 100, :height => 100) if offer.picture.present? %></td>
         <td><%= offer.description %></td>
         <td><%= offer.valid_until %></td>
-        <td><%= link_to 'Show', offer %></td>
-        <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
-        <td><%= link_to 'Destroy', offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
