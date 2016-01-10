@@ -1,20 +1,26 @@
-<h1>Ofertas Disponibles</h1>
-<p>Aqui van las ofertas :D</p>
-
-<table>
-  <tbody>
-    <% @offers.each do |offer| %>
+<div class="col-md-9">
+<% @offers.each do |offer| %>
       <tr>
-        <td><%= image_tag(offer.picture_url, :width => 100, :height => 100) if offer.picture.present? %></td>
-        <th colspan="20"></th>
-        <td><%= offer.title %></td>
-        <th colspan="20"></th>
-        <td><%= offer.description %></td>
-        <th colspan="20"></th>
-        <td><%= offer.valid_until %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title"> <%= offer.title %> </h2>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-1"> 
+                  <figure>
+                    <%= image_tag(offer.picture_url, :width => 100, :height => 100) if offer.picture.present? %>
+                  </figure>
+                </div>
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                    <%= offer.description %>
+                    <%= offer.valid_until %>
+                  </div>
+                </div>
+            </div>
 
-<br>
+              </tr>
+            </div>
+    <% end %>
+
+</div>
