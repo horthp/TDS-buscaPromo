@@ -17,12 +17,18 @@
                 <dd><span class="glyphicon glyphicon-envelope"></span> <%= @store.email %></dd>
                 <dd><span class="glyphicon glyphicon-phone-alt"></span> <%= @store.phone %></dd>
                 <% if user_signed_in? and current_user.store.id == @store.id %>
-                <%= link_to '<span class="glyphicon glyphicon-plus"></span> Publicar Oferta'.html_safe ,new_store_offer_path(@store) %>
-                <br>
-                <%= link_to '<span class="glyphicon glyphicon-globe"></span> Agregar en el mapa'.html_safe, new_store_location_path(@store) %>
-                <br>
-                 <%= link_to'<span class="glyphicon glyphicon-pencil"></span> Editar perfil'.html_safe,edit_store_path(@store) %>
-                 <br>
+                  <%= link_to '<span class="glyphicon glyphicon-plus"></span> Publicar Oferta'.html_safe ,new_store_offer_path(@store) %>
+                  <br>
+                  <% if @store.location == nil %>
+                    <%= link_to '<span class="glyphicon glyphicon-globe"></span> Agregar en el mapa'.html_safe, new_store_location_path(@store) %>
+                    <br>
+                  <% end %>
+                   <%= link_to'<span class="glyphicon glyphicon-pencil"></span> Editar perfil'.html_safe,edit_store_path(@store) %>
+                   <br>
+                  <%if @store.location != nil%>
+                    <%= link_to '<span class="glyphicon glyphicon-flag"></span> Ver ubicacion'.html_safe,store_location_path(@store,@store.location.id) %>
+                    <br>
+                    <% end%>
                 <% end %>
     
                 <%= link_to t('.back', :default => t("helpers.links.back")),

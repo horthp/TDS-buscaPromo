@@ -42,9 +42,8 @@
                 <li class="active"><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
                 <li class="active"><%= link_to "Registrar tienda", new_store_path %></li>  
             <% else %>
-            <% if user_signed_in? and current_user.store != nil %>
-                <li class="active"><%= link_to 'Mi tienda', store_path(current_user.store.id) %></li>
-                <li class="active"><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
+            <% if user_signed_in? and current_user.store != nil %>              <li class="active"><%= link_to '<span class="glyphicon glyphicon-star"></span> Mi tienda'.html_safe, store_path(current_user.store.id) %></li>
+                <li class="active"><%= link_to '<span class="glyphicon glyphicon-circle-arrow-right"></span> Logout'.html_safe, destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
             <% else %>  
               <li class="active"><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %></li>
               <li class="active"><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>

@@ -10,6 +10,7 @@ class LocationsController < ApplicationController
   # GET /locations/1
   # GET /locations/1.json
   def show
+    @store = Store.find(@store.id)
   end
 
   # GET /locations/new
@@ -26,10 +27,10 @@ class LocationsController < ApplicationController
   # POST /locations.json
   def create
     @location = Location.new(location_params)
-
+    @location.store_id = @store.id
     respond_to do |format|
       if @location.save
-        format.html { redirect_to @location, notice: 'Location was successfully created.' }
+        format.html { redirect_to store_path(@store), notice: 'Location was successfully created.' }
         format.json { render :show, status: :created, location: @location }
       else
         format.html { render :new }
