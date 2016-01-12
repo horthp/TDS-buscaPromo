@@ -15,6 +15,7 @@ class LocationsController < ApplicationController
   # GET /locations/new
   def new
     @location = Location.new
+    @store = Store.find(@store.id)
   end
 
   # GET /locations/1/edit
