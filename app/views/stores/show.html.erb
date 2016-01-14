@@ -108,7 +108,12 @@
                     </div>
 
                     <div class="panel-body">
-                        <%= link_to 'Editar',edit_store_offer_path(offer.store_id,offer.id), :class => 'btn btn-primary'  %>
+                        <% if current_user.store.id == @store.id %>
+                          <%= link_to 'Editar',edit_store_offer_path(offer.store_id,offer.id), :class => 'btn btn-primary btn-xs'  %>
+                          <%= link_to 'Ver mas',store_offer_path(offer.store_id,offer.id), :class => 'btn btn-primary btn-xs'  %>
+                          <br>
+                          <%= link_to '<span class="glyphicon glyphicon-remove"></span> Eliminar'.html_safe, store_offer_path(offer.store_id,offer.id) , method: :delete, data: { confirm: 'Confirme que desea cancelar esta Oferta' }, class: "btn btn-danger btn-xs" %></p>
+                        <% end %>
                         <h4 style="text-align:right;float:right;"><%= offer.valid_until %></h4>
                     </div>
                 </div>

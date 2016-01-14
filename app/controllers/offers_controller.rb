@@ -58,7 +58,7 @@ class OffersController < ApplicationController
   def destroy
     @offer.destroy
     respond_to do |format|
-      format.html { redirect_to offers_url, notice: 'Offer was successfully destroyed.' }
+      format.html { redirect_to store_path(@store), notice: 'Offer was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

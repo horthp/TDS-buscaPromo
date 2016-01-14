@@ -5,8 +5,7 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.json
   def index
-    @reviews = Review.find(@store.id)
-    @store = Store.find(@store.id) 
+    @reviews = Review.where(store_id: @store.id) 
   end
 
   # GET /reviews/1
