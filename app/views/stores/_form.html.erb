@@ -1,0 +1,41 @@
+<%= form_for @store do |f| %>
+<div class="page-header">
+  
+</div>
+    <div class="container theme-showcase">
+      <div class="col-md-6  ">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              <div class="panel-body roundgrey centertext">
+                  <div class="form-group">
+                    <%= f.label :name, :class => 'control-label' %>
+                    <%= f.text_field :name, :class => 'form-control' %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label :avatar, :class => 'control-label' %>
+                    <%= f.file_field :avatar, :class => 'form-control' %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label :phone, :class => 'control-label' %>
+                    <%= f.text_field :phone, :class => 'form-control' %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label :address, :class => 'control-label' %>
+                    <%= f.text_field :address, :class => 'form-control' %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label :email, :class => 'control-label' %>
+                    <%= f.text_field :email, :class => 'form-control' %>
+                  </div>
+
+                  <div class="form-actions">
+                    <%= f.submit nil, :class => 'btn btn-primary' %>
+                    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                                stores_path, :class => 'btn' %>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+<% end %>

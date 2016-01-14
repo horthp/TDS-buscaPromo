@@ -1,0 +1,47 @@
+<div class="page-header">
+  
+</div
+
+
+
+<% @offers.each do |offer| %>
+    <article class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4> > <%= offer.title %> </h4>
+            </div>
+            <div class="col-md-3">
+            <br>
+                <%= image_tag(offer.picture_url, :width => 150, :height => 150, :align=> "middle") if offer.picture.present? %>   
+            </div>       
+            <div class="col-md-9"> 
+    
+                <div class="panel-body">
+                    <p>
+                        <%= offer.description %>
+                    </p>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        <%= offer.valid_until %>
+                    </p> 
+                </div> 
+                <div class="panel-body">
+                    <a href="ofertaUsuario.html" button class="btn btn-primary" type="button">
+                        Ver mas
+                    </a>
+                    <a href="editarOferta.html" button class="btn btn-primary" type="button">
+                        Editar
+                    </a>
+                    <%= link_to '<span class="glyphicon glyphicon-plus"></span> Publicar Oferta'.html_safe ,new_store_offer_path(@store) %>
+                    <%= button_to "Ver más", new_admin_course_path, :id => "open-contacts-dialog-btn",
+      :class => "inbox-sf-add-btn tip", :method => :get %>
+                </div>
+            </div>    
+  
+        </div>
+    </article>
+<% end %>
+
+
+

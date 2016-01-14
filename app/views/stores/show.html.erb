@@ -1,0 +1,88 @@
+<%- model_class = Store -%>
+<div class="page-header">
+
+</div>
+
+<div class="container theme-showcase">
+    <div>
+      <div class="col-md-4  ">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              <div class="panel-body roundgrey centertext">
+                <figure>
+                  <dd><%= image_tag(@store.avatar_url, :width => 200, :height => 200) if @store.avatar.present? %></dd> 
+                </figure>
+                <div style="text-align: center;"> 
+                    <h3><%= @store.name %></h3>
+                    <hr>
+                </div>
+                
+                <div style="text-align: center;"> 
+                    <h5><%= @store.address %></h5>
+                    <hr>
+                </div>
+                
+                <div style="text-align: center;"> 
+                    <h5><span class="glyphicon glyphicon-envelope"></span> <%= @store.email %></h5>
+                    <hr>
+                </div>
+                
+                <div style="text-align: center;"> 
+                    <h5><span class="glyphicon glyphicon-phone-alt"></span> <%= @store.phone %></h5>
+                    <hr>
+                </div>
+
+                <div style="text-align: center;"> 
+                <% if user_signed_in? and current_user.store.id == @store.id %>
+                  <%= link_to '<span class="glyphicon glyphicon-plus"></span> Publicar Oferta'.html_safe ,new_store_offer_path(@store) %>
+                <hr>
+                </div>
+
+                <div style="text-align: center;"> 
+                    <% if @store.location == nil %>
+                        <%= link_to '<span class="glyphicon glyphicon-globe"></span> Agregar en el mapa'.html_safe, new_store_location_path(@store) %>
+                    <% end %>
+                    <hr>
+                </div>
+
+                <div style="text-align: center;"> 
+                   <%= link_to'<span class="glyphicon glyphicon-pencil"></span> Editar perfil'.html_safe,edit_store_path(@store) %>
+                </div>
+
+                <div style="text-align: center;"> 
+                    <%if @store.location != nil%>
+                    <hr>
+                        <%= link_to '<span class="glyphicon-flag"></span> Ver ubicacion'.html_safe,store_location_path(@store,@store.location.id) %>
+                    <% end%>
+                </div>    
+                
+                <% end %>
+            </div> 
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+    <% @offers.each do |offer| %>
+          <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title"> <%= offer.title %> </h2>
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-1"> 
+                      <figure>
+                        <%= image_tag(offer.picture_url, :width => 100, :height => 100) if offer.picture.present? %>
+                      </figure>
+                    </div>
+                      <div >
+                        <%= offer.description %>
+                        <%= offer.valid_until %>
+                      </div>
+                </div>
+              </div>
+            </div>    
+        <% end %>
+    </div>
+  </div>
+</div>
+
