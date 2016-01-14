@@ -10,6 +10,7 @@
           <div class="panel-heading">
               <div class="panel-body roundgrey centertext">
                 <figure>
+<<<<<<< HEAD
                   <dd><%= image_tag(@store.avatar_url, :width => 200, :height => 200) if @store.avatar.present? %></dd> 
                 </figure>
                 <div style="text-align: center;"> 
@@ -57,6 +58,31 @@
                 </div>    
                 
                 <% end %>
+=======
+                  <dd><%= image_tag(@store.avatar_url, :width => 200, :height => 200) if @store.avatar.present? %></dd>
+                </figure>
+                <dd><%= @store.name %></dd>
+                <dd><%= @store.address %></dd>
+                <dd><span class="glyphicon glyphicon-envelope"></span> <%= @store.email %></dd>
+                <dd><span class="glyphicon glyphicon-phone-alt"></span> <%= @store.phone %></dd>
+                <% if user_signed_in? and current_user.store.id == @store.id %>
+                  <%= link_to '<span class="glyphicon glyphicon-plus"></span> Publicar Oferta'.html_safe ,new_store_offer_path(@store) %>
+                  <br>
+                  <% if @store.location == nil %>
+                    <%= link_to '<span class="glyphicon glyphicon-globe"></span> Agregar en el mapa'.html_safe, new_store_location_path(@store) %>
+                    <br>
+                  <% end %>
+                   <%= link_to'<span class="glyphicon glyphicon-pencil"></span> Editar perfil'.html_safe,edit_store_path(@store) %>
+                   <br>
+                  <%if @store.location != nil%>
+                    <%= link_to '<span class="glyphicon glyphicon-flag"></span> Ver ubicacion'.html_safe,store_location_path(@store,@store.location.id) %>
+                    <br>
+                    <% end%>
+                <% end %>
+    
+                <%= link_to t('.back', :default => t("helpers.links.back")),
+                            stores_path, :class => 'btn'  %>
+>>>>>>> 67853e86f7d89cce4b6e884cec8bf6f4bda49459
             </div> 
         </div>
       </div>

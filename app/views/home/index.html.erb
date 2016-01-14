@@ -2,6 +2,7 @@
   
 </div
 
+<<<<<<< HEAD
 
 
 <% @offers.each do |offer| %>
@@ -45,3 +46,31 @@
 
 
 
+=======
+<div class="col-md-9">
+<% @offers.each do |offer| %>
+      <tr>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title"> <%= offer.title %> </h2>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-1"> 
+                  <figure>
+                    <%= image_tag(offer.picture_url, :width => 100, :height => 100) if offer.picture.present? %>
+                  </figure>
+                </div>
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                    <%= offer.description %>
+                    <%= offer.valid_until %>
+                  </div>
+                </div>
+            </div>
+
+              </tr>
+            </div>
+    <% end %>
+
+</div>
+>>>>>>> 67853e86f7d89cce4b6e884cec8bf6f4bda49459
