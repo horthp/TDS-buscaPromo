@@ -14,29 +14,58 @@
   
 </div>
     <div class="container theme-showcase">
-      <div class="col-md-6  ">
+      <div class="col-md-6 col-md-offset-3">
         <div class="panel panel-default">
           <div class="panel-heading">
               <div class="panel-body roundgrey centertext">
-                <div class="field">
-                  <%= f.label :title %><br>
-                  <%= f.text_field :title %>
+                <div style="text-align: center;"> 
+                    <h2>Nueva Oferta</h2>
                 </div>
+                
+                <hr>
+                
+                <div style="text-align: center;"> 
+                    <div class="field">
+                        <h4>Titulo</h4>
+                        <%= f.text_field :title %>
+                    </div>
+                 </div>
+                
+                <hr>
+                
+                <div style="text-align: center;"> 
+                    <div class="field">
+                        <h4>Imagen</h4>
+                        <%= f.file_field :picture %>
+                    </div>
+                 </div>
+                
+                <hr>
+
+                <div style="text-align: center;"> 
                 <div class="field">
-                  <%= f.label :picture %><br>
-                  <%= f.file_field :picture %>
-                </div>
-                <div class="field">
-                  <%= f.label :description %><br>
+                  <h4>Descripción</h4>
                   <%= f.text_area :description %>
                 </div>
+</div>
+                
+                <hr>
+
+                <div style="text-align: center;">  
                 <div class="field">
-                  <%= f.label :valid_until %><br>
+                  <h4>Valido Hasta</h4>
                   <%= f.datetime_select :valid_until %>
                 </div>
+                </div>
+                
+                <hr>
+
+                <div style="text-align: center;">  
                 <div class="actions">
                   <%= f.submit %>
-                  <%= link_to 'Back', store_offers_path(@store) %>
+                  <br>
+                  <%= link_to 'Volver', store_offers_path(@store) %>
+                </div>
                 </div>
               </div>
             </div>
