@@ -11,6 +11,7 @@ class OffersController < ApplicationController
   # GET /offers/1
   # GET /offers/1.json
   def show
+    @store = Store.find(@store.id)
   end
 
   # GET /offers/new
