@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
   
   
+  resources :reviews
   get 'home/index'
   devise_for :users
 
   resources :stores do 
       resources :locations, only: [:index, :show, :new, :edit, :create, :update, :destroy]
       resources :offers, only: [:index, :show, :new, :edit, :create, :update, :destroy]
+      resources :reviews, only: [:index, :show, :new, :edit, :create, :update, :destroy]
   end
 
 

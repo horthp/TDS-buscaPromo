@@ -40,17 +40,11 @@
                     <hr>
                 </div>
                 <div style="text-align: center;"> 
-                    <%= link_to '<span class="glyphicon glyphicon-list-alt"></span> Agregar reseña'.html_safe ,new_store_review_path(@store) %>                    
-                    <hr>
-                </div>
-                <div style="text-align: center;"> 
-                    <% if @store.reviews != nil %>
-                      <%= link_to '<span class="glyphicon glyphicon-book"></span> Ver reseñas'.html_safe ,store_reviews_path(@store) %>     <hr>
-                    <% end%>
+                    <%= link_to '<span class="glyphicon glyphicon-list-alt"></span> Agregar reseña'.html_safe ,new_store_review_path(@store) %>                    <hr>
                 </div>
                 <div style="text-align: center;"> 
                 <% if user_signed_in? and current_user.store.id == @store.id %>
-                  <%= link_to '<span class="glyphicon glyphicon-plus"></span> Publicar Oferta'.html_safe ,new_store_offer_path(@store) %>
+                  <%= link_to '<span class="glyphicon glyphicon-plus"></span> Publicar Oferta'.html_safe ,new_store_review_path(@store) %>
                 </div>
 
                 <div style="text-align: center;"> 
@@ -79,33 +73,16 @@
       </div>
     </div>
     <div class="col-md-8">
-    <% @offers.each do |offer| %>
+    <% @reviews.each do |review| %>
           <div class="row">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h2 class="panel-title"> <%= offer.title %> </h2>
+                    <h2 class="panel-title"> <%= review.title %> </h2>
                 </div>
                 <div class="panel-body">
-                    <div class="col-md-2"> 
-                      <figure>
-
-                          <%if offer.picture.present?  %>
-                              <div style="text-align: center;"> 
-                                  <%= image_tag(offer.picture_url, :width => 100, :height => 100) %>
-                              </div>    
-                          <% else %>
-                              <div style="text-align: center;"> 
-                                  <%= image_tag("comida.jpg", :width => 100, :height => 100) %>
-                              </div>
-                          <% end %>
-                      </figure>
-                    </div>
-                    
-                    <div class="col-md-10"> 
+                                       <div class="col-md-10"> 
                     <div >
-                        <%= offer.description %>
-                        <br>
-                        <h4 style="text-align:right"><%= offer.valid_until %></h4>
+                        <%= review.body %>
                     </div>
                     </div>
                 </div>
