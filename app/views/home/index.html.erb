@@ -9,40 +9,37 @@
                 <h4><%= offer.title %> </h4>
             </div>
             <div class="panel-body">
-                    <div class="col-md-3"> 
-                      <figure>
-
-                          <%if offer.picture.present?  %>
-                              <div style="text-align: center;"> 
-                                  <%= image_tag(offer.picture_url, :width => 100, :height => 100) %>
-                              </div>    
-                          <% else %>
-                              <div style="text-align: center;"> 
-                                  <%= image_tag("comida.jpg", :width => 100, :height => 100) %>
-                              </div>
-                          <% end %>
-                      </figure>
-                    </div>
-                    
-                    <div class="col-md-9"> 
-                    <div >
-                        <%= offer.description %>
-                        <br>
-                        <h4 style="text-align:right"><%= offer.valid_until %></h4>
-                    </div>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <%= link_to 'Ver mas',store_offer_path(offer.store_id,offer.id), :class => 'btn btn-primary'  %>
-                    <%if user_signed_in?%>
-                        <% if current_user.store == offer.store_id %> 
-                            <%= link_to 'Editar',edit_store_offer_path(offer.store_id,offer.id), :class => 'btn btn-primary'  %>
+                <div class="col-md-3"> 
+                    <figure>
+                        <%if offer.picture.present?  %>
+                            <div style="text-align: center;"> 
+                                <%= image_tag(offer.picture_url, :width => 100, :height => 100) %>
+                            </div>    
+                        <% else %>
+                            <div style="text-align: center;"> 
+                                <%= image_tag("comida.jpg", :width => 100, :height => 100) %>
+                            </div>
                         <% end %>
-                    <% end %>
+                    </figure>
                 </div>
-            </div>    
-  
-        </div>
+                    
+                <div class="col-md-9"> 
+                    <div >
+                        <%= offer.description %>                      
+                    </div>
+                </div>
+            </div>
+                
+            <div class="panel-body">
+                <%= link_to 'Ver mas',store_offer_path(offer.store_id,offer.id), :class => 'btn btn-primary'  %>
+                <h4 style="text-align:right;float:right;"><%= offer.valid_until %></h4>
+                <%if user_signed_in?%>
+                    <% if current_user.store == offer.store_id %> 
+                        <%= link_to 'Editar',edit_store_offer_path(offer.store_id,offer.id), :class => 'btn btn-rimary'  %>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>    
     </article>
 <% end %>
 

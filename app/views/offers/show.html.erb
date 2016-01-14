@@ -1,16 +1,41 @@
 <p id="notice"><%= notice %></p>
+<br>
+<br>
+<br>
+<br>
+<article class="col-md-5 col-md-offset-1">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4><%= @offer.title %> </h4>
+            </div>
+            <div class="panel-body">
+                    <div class="col-md-3"> 
+                      <figure>
 
-<p>
-<%= image_tag(@offer.picture_url, :width => 100, :height => 100) if @offer.picture.present? %>
-</p>
-<p>
-  <%= @offer.title %>
-</p>
-<p>
-  <%= @offer.description %>
-</p>
+                          <%if @offer.picture.present?  %>
+                              <div style="text-align: center;"> 
+                                  <%= image_tag(@offer.picture_url, :width => 100, :height => 100) %>
+                              </div>    
+                          <% else %>
+                              <div style="text-align: center;"> 
+                                  <%= image_tag("comida.jpg", :width => 100, :height => 100) %>
+                              </div>
+                          <% end %>
+                      </figure>
+                    </div>
+                    
+                    <div class="col-md-9"> 
+		                    <div >
+		                        <%= @offer.description %>
+		                    </div>
+                    </div>
 
-<p>
-  <%= @offer.valid_until %>
-</p>
+                    <div class="panel-body">
+                    		<h4 style="text-align:right;float:right;"><%= @offer.valid_until %></h4>
+                	</div>
+                </div>
 
+            </div>    
+  
+        </div>
+    </article>

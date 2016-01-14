@@ -70,40 +70,43 @@
         </div>
       </div>
     </div>
-    <div class="col-md-8">
-    <% @offers.each do |offer| %>
-          <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h2 class="panel-title"> <%= offer.title %> </h2>
-                </div>
-                <div class="panel-body">
-                    <div class="col-md-2"> 
-                      <figure>
+    
 
-                          <%if offer.picture.present?  %>
-                              <div style="text-align: center;"> 
-                                  <%= image_tag(offer.picture_url, :width => 100, :height => 100) %>
-                              </div>    
-                          <% else %>
-                              <div style="text-align: center;"> 
-                                  <%= image_tag("comida.jpg", :width => 100, :height => 100) %>
-                              </div>
-                          <% end %>
-                      </figure>
+    <div class="col-md-8">
+        <% @offers.each do |offer| %>
+            <div class="row">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2 class="panel-title"> <%= offer.title %> </h2>
                     </div>
+                    <div class="panel-body">
+                        <div class="col-md-2"> 
+                            <figure>
+                                <%if offer.picture.present?  %>
+                                    <div style="text-align: center;"> 
+                                        <%= image_tag(offer.picture_url, :width => 100, :height => 100) %>
+                                    </div>    
+                                <% else %>
+                                    <div style="text-align: center;"> 
+                                        <%= image_tag("comida.jpg", :width => 100, :height => 100) %>
+                                    </div>
+                                <% end %>
+                            </figure>
+                        </div>
                     
-                    <div class="col-md-10"> 
-                    <div >
-                        <%= offer.description %>
-                        <br>
-                        <h4 style="text-align:right"><%= offer.valid_until %></h4>
+                        <div class="col-md-10"> 
+                            <%= offer.description %>
+                        </div>
                     </div>
+
+                    <div class="panel-body">
+                        <%= link_to 'Editar',edit_store_offer_path(offer.store_id,offer.id), :class => 'btn btn-primary'  %>
+                        <h4 style="text-align:right;float:right;"><%= offer.valid_until %></h4>
                     </div>
                 </div>
-              </div>
-            </div>    
+            </div>   
         <% end %>
+    </div> 
     </div>
   </div>
 </div>
