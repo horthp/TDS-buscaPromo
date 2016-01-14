@@ -6,20 +6,20 @@
 
 
 <% @offers.each do |offer| %>
-    <article class="col-md-4">
+    <article class="col-md-6">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4> > <%= offer.title %> </h4>
             </div>
             <div class="col-md-3">
             <br>
-                <%= image_tag(offer.picture_url, :width => 150, :height => 150, :align=> "middle") if offer.picture.present? %>   
+                <%= image_tag(offer.picture_url, :width => 150, :height => 150) if offer.picture.present? %>   
             </div>       
             <div class="col-md-9"> 
     
                 <div class="panel-body">
                     <p>
-                        <%= offer.description %>
+                        <%=h truncate(offer.description, :length => 100) %>  
                     </p>
                 </div>
                 <div class="panel-body">
@@ -34,9 +34,8 @@
                     <a href="editarOferta.html" button class="btn btn-primary" type="button">
                         Editar
                     </a>
-                    <%= link_to '<span class="glyphicon glyphicon-plus"></span> Publicar Oferta'.html_safe ,new_store_offer_path(@store) %>
-                    <%= button_to "Ver más", new_admin_course_path, :id => "open-contacts-dialog-btn",
-      :class => "inbox-sf-add-btn tip", :method => :get %>
+                    
+                    
                 </div>
             </div>    
   
@@ -45,32 +44,3 @@
 <% end %>
 
 
-
-=======
-<div class="col-md-9">
-<% @offers.each do |offer| %>
-      <tr>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h2 class="panel-title"> <%= offer.title %> </h2>
-            </div>
-            <div class="panel-body">
-                <div class="col-md-1"> 
-                  <figure>
-                    <%= image_tag(offer.picture_url, :width => 100, :height => 100) if offer.picture.present? %>
-                  </figure>
-                </div>
-                  <div class="panel panel-default">
-                      <div class="panel-heading">
-                    <%= offer.description %>
-                    <%= offer.valid_until %>
-                  </div>
-                </div>
-            </div>
-
-              </tr>
-            </div>
-    <% end %>
-
-</div>
->>>>>>> 67853e86f7d89cce4b6e884cec8bf6f4bda49459
