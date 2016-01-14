@@ -1,35 +1,43 @@
 <%= form_for @store do |f| %>
-<div class="page-header">
-  
-</div>
+
     <div class="container theme-showcase">
-      <div class="col-md-6  ">
+      <div class="col-md-4 col-md-offset-4">
         <div class="panel panel-default">
           <div class="panel-heading">
               <div class="panel-body roundgrey centertext">
+                  <div style="text-align: center;"> 
+                      <h2>Editar Perfil</h2>
+                  </div>
+                
+                  <hr>
+                
+                  <div style="text-align: center;"> 
                   <div class="form-group">
                     <%= f.label :name, :class => 'control-label' %>
                     <%= f.text_field :name, :class => 'form-control' %>
                   </div>
-                  <div class="form-group">
-                    <%= f.label :avatar, :class => 'control-label' %>
-                    <%= f.file_field :avatar, :class => 'form-control' %>
-                  </div>
+                  <hr>
+                    <%= f.label :picture %>
+                    <%= f.file_field :picture %>
+                  <hr>
                   <div class="form-group">
                     <%= f.label :phone, :class => 'control-label' %>
                     <%= f.text_field :phone, :class => 'form-control' %>
                   </div>
+                  <hr>
                   <div class="form-group">
                     <%= f.label :address, :class => 'control-label' %>
                     <%= f.text_field :address, :class => 'form-control' %>
                   </div>
+                  <hr>
                   <div class="form-group">
                     <%= f.label :email, :class => 'control-label' %>
                     <%= f.text_field :email, :class => 'form-control' %>
                   </div>
-
+                  <hr>
                   <div class="form-actions">
                     <%= f.submit nil, :class => 'btn btn-primary' %>
+                    <br>
                     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                                 stores_path, :class => 'btn' %>
                   </div>
