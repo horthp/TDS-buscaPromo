@@ -1,9 +1,6 @@
 <div class="page-header">
   
-</div
-
-<<<<<<< HEAD
-
+</div>
 
 <% @offers.each do |offer| %>
     <article class="col-md-5 col-md-offset-0.5">
@@ -28,14 +25,12 @@
                     </p> 
                 </div> 
                 <div class="panel-body">
-                    <a href="ofertaUsuario.html" button class="btn btn-primary" type="button">
-                        Ver mas
-                    </a>
-                    <a href="editarOferta.html" button class="btn btn-primary" type="button">
-                        Editar
-                    </a>
-                    
-                    
+                    <%= link_to 'Ver mas',store_offer_path(offer.store_id,offer.id), :class => 'btn btn-primary'  %>
+                    <%if user_signed_in? and current_user.store_id != nil%>
+                        <% if current_user.store.id == offer.store_id %> 
+                            <%= link_to 'Editar',edit_store_offer_path(offer.store_id,offer.id), :class => 'btn btn-primary'  %>
+                        <% end %>
+                    <% end %>
                 </div>
             </div>    
   
