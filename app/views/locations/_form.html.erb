@@ -63,11 +63,11 @@
                     <hr>
                         <%= link_to '<span class="glyphicon-flag"></span> Ver ubicacion'.html_safe,store_location_path(@store,@store.location.id) %>
                     <% end%>
-                    <hr>
-                    <%= link_to t('.back', :default => t("helpers.links.back")),
-                            stores_path, :class => 'btn btn-primary'  %>
                 </div>    
-
+                <div style="text-align: center;"> 
+                  <hr>
+                  <%= link_to 'Back',store_path(@store), :class => 'btn btn-primary'  %>
+                </div>
                 <% end %>
 
             </div> 

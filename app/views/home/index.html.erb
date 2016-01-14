@@ -26,8 +26,8 @@
                 </div> 
                 <div class="panel-body">
                     <%= link_to 'Ver mas',store_offer_path(offer.store_id,offer.id), :class => 'btn btn-primary'  %>
-                    <%if user_signed_in? and current_user.store_id != nil%>
-                        <% if current_user.store.id == offer.store_id %> 
+                    <%if user_signed_in?%>
+                        <% if current_user.store == offer.store_id %> 
                             <%= link_to 'Editar',edit_store_offer_path(offer.store_id,offer.id), :class => 'btn btn-primary'  %>
                         <% end %>
                     <% end %>
