@@ -9,10 +9,17 @@
         <div class="panel panel-default">
           <div class="panel-heading">
               <div class="panel-body roundgrey centertext">
-                <figure>
-
-                  <dd><%= image_tag(@store.avatar_url, :width => 200, :height => 200) if @store.avatar.present? %></dd> 
-                </figure>
+                <div class="img-circle">
+                  <%if @store.avatar.present? %>
+                      <div style="text-align: center;"> 
+                          <%= image_tag(@store.avatar_url, :width => 200, :height => 200) %>
+                      </div>    
+                  <% else %>
+                      <div style="text-align: center;"> 
+                          <%= image_tag("tienda.jpg", :width => 100, :height => 100, :align => "center") %>
+                      </div>
+                  <% end %>
+                </div>
                 <div style="text-align: center;"> 
                     <h3><%= @store.name %></h3>
                     <hr>
@@ -71,15 +78,28 @@
                     <h2 class="panel-title"> <%= offer.title %> </h2>
                 </div>
                 <div class="panel-body">
-                    <div class="col-md-1"> 
+                    <div class="col-md-2"> 
                       <figure>
-                        <%= image_tag(offer.picture_url, :width => 100, :height => 100) if offer.picture.present? %>
+
+                          <%if offer.picture.present?  %>
+                              <div style="text-align: center;"> 
+                                  <%= image_tag(offer.picture_url, :width => 100, :height => 100) %>
+                              </div>    
+                          <% else %>
+                              <div style="text-align: center;"> 
+                                  <%= image_tag("comida.jpg", :width => 100, :height => 100) %>
+                              </div>
+                          <% end %>
                       </figure>
                     </div>
-                      <div >
+                    
+                    <div class="col-md-10"> 
+                    <div >
                         <%= offer.description %>
-                        <%= offer.valid_until %>
-                      </div>
+                        <br>
+                        <h4 style="text-align:right"><%= offer.valid_until %></h4>
+                    </div>
+                    </div>
                 </div>
               </div>
             </div>    
@@ -87,4 +107,3 @@
     </div>
   </div>
 </div>
-
